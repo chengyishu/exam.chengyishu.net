@@ -32,49 +32,17 @@
                     <img id="logo" src="images/favicon.png" alt="诚意塾" height="30px">
                 </a>
             </div>
-            <!-- 导航项 -->
+            <!-- 导航项 (动态初始化) -->
             <div class="collapse navbar-collapse navbar-collapse-example">
-                <ul class="nav navbar-nav">
-                    <!-- 常用题库 -->
-                    <li class="active">
-                        <a href="/">《みんなの日本語初級1》</a>
-                    </li>
-                    <li class="">
-                        <a href="/">《みんなの日本語初級2》</a>
-                    </li>
-                    <li class="">
-                        <a href="/">《マップ式中国語単語記憶術》</a>
-                    </li>
-                    <!-- 全部题库 -->
-                    <li class="dropdown">
-                        <a href="/" class="dropdown-toggle" data-toggle="dropdown">全部题库 <b class="caret"></b></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="/">《みんなの日本語初級1》</a></li>
-                            <li><a href="/">《みんなの日本語初級2》</a></li>
-                            <li class="divider"></li>
-                            <li><a href="/">《マップ式中国語単語記憶術》</a></li>
-                        </ul>
-                    </li>
-                </ul>
+                <ul id="menu" class="nav navbar-nav"></ul>
             </div>
         </div>
     </nav>
-    <!-- 试卷列表 -->
+    <!-- 试卷列表 (动态初始化) -->
     <div class="container">
-        <div class="list-group">
-            <a href="/" class="list-group-item">
-                <h4 class="list-group-item-heading">第１課</h4>
-                <p class="list-group-item-text text-muted">共100道题</p>
-            </a>
-            <a href="/" class="list-group-item">
-                <h4 class="list-group-item-heading">第２課</h4>
-                <p class="list-group-item-text text-muted">共100道题</p>
-            </a>
-            <a href="/" class="list-group-item">
-                <h4 class="list-group-item-heading">第３課</h4>
-                <p class="list-group-item-text text-muted">共100道题</p>
-            </a>
-        </div>
+        <h2 id="bookName" class="text-center"></h2>
+        <br>
+        <div id="papers" class="list-group"></div>
     </div>
     <!-- ZUI Javascript depends on jQuery -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/zui/1.10.0/lib/jquery/jquery.js"></script>

@@ -1,0 +1,26 @@
+.radio {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+.form-control {
+    margin-left: 1.5rem;
+    width: calc(100% - 1.5rem);
+}
+
+.audio, .image, .video {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.image, .video {
+    width: calc(80% - 1.5rem);
+}
+
+.image img, .video video {
+    border-radius: 3px;
+}
+
+#paperName {
+    margin-top: 10px;
+}
