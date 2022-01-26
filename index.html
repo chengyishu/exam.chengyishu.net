@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>诚意塾考试系统</title>
+    <link rel="icon" href="images/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="images/app.png">
+    <!-- ZUI Standard zipped CSS files -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/zui/1.10.0/css/zui.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container-fluid">
+            <!-- 导航头 -->
+            <div class="navbar-header">
+                <!-- 移动设备上的导航切换按钮 -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target=".navbar-collapse-example">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- LOGO -->
+                <a class="navbar-brand" href="/">
+                    <img id="logo" src="images/favicon.png" alt="诚意塾" height="30px">
+                </a>
+            </div>
+            <!-- 导航项 -->
+            <div class="collapse navbar-collapse navbar-collapse-example">
+                <ul class="nav navbar-nav">
+                    <!-- 常用题库 -->
+                    <li class="active">
+                        <a href="/">《みんなの日本語初級1》</a>
+                    </li>
+                    <li class="">
+                        <a href="/">《みんなの日本語初級2》</a>
+                    </li>
+                    <li class="">
+                        <a href="/">《マップ式中国語単語記憶術》</a>
+                    </li>
+                    <!-- 全部题库 -->
+                    <li class="dropdown">
+                        <a href="/" class="dropdown-toggle" data-toggle="dropdown">全部题库 <b class="caret"></b></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="/">《みんなの日本語初級1》</a></li>
+                            <li><a href="/">《みんなの日本語初級2》</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/">《マップ式中国語単語記憶術》</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- 试卷列表 -->
+    <div class="container">
+        <div class="list-group">
+            <a href="/" class="list-group-item">
+                <h4 class="list-group-item-heading">第１課</h4>
+                <p class="list-group-item-text text-muted">共100道题</p>
+            </a>
+            <a href="/" class="list-group-item">
+                <h4 class="list-group-item-heading">第２課</h4>
+                <p class="list-group-item-text text-muted">共100道题</p>
+            </a>
+            <a href="/" class="list-group-item">
+                <h4 class="list-group-item-heading">第３課</h4>
+                <p class="list-group-item-text text-muted">共100道题</p>
+            </a>
+        </div>
+    </div>
+    <!-- ZUI Javascript depends on jQuery -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/zui/1.10.0/lib/jquery/jquery.js"></script>
+    <!-- ZUI Standard zipped JavaScript files -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/zui/1.10.0/js/zui.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
