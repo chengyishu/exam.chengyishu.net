@@ -1,3 +1,6 @@
+// 正确答案
+var answers = {};
+
 $(function () {
     // 加载试卷
     const params = new URLSearchParams(window.location.search);
@@ -49,7 +52,7 @@ $(function () {
                         // 题目处理
                         if (elem.type == 'text') {
                             // 填空题
-                            template += '<input name="q{{no}}" class="form-control">';
+                            template += '<input name="q{{no}}" required class="form-control">';
                             var match = elem.question.match(/\{(.*)\}/);
                             elem.answer = match[1];
                             var blank = ' ';
@@ -60,14 +63,18 @@ $(function () {
                             elem.question = elem.question.replaceAll(match[0], blank);
                         } else if (elem.type == 'textarea') {
                             // 主观题
-                            template += '<textarea name="q{{no}}" rows="1" class="form-control"></textarea>';
-                            elem.answer = '参考: ' + elem.comment;
-                        } else {
+                            template += '<textarea name="q{{no}}" required rows="1" class="form-control"></textarea>';
+                            elem.answer = elem.comment;
+                        } else if (elem.type == 'radio') {
                             // 单选题
-                            for (var option of shuffle(elem.options)) {
-                                template += '<div class="radio"><label><input type="radio" name="q{{no}}" value="' + option + '"> ' + option + '</label></div>';
-                            }
                             elem.answer = elem.options[0];
+                            for (var option of shuffle(elem.options)) {
+                                template += '<div class="radio"><label><input type="radio" name="q{{no}}" required value="' + option + '"> <span>' + option + '</span></label></div>';
+                            }
+                        } else {
+                            // 非法题型
+                            $('#paper').append('<hr><div class="text-center">试卷题型有误 ...</div>');
+                            return false;
                         }
                         template += '</div>';
                         // 内容替换
@@ -80,11 +87,18 @@ $(function () {
                         $('#paper').append(html);
                         // 满分信息
                         fullmarks += parseInt(elem.score);
+                        // 正确答案
+                        answers['q' + (index + 1)] = {
+                            answer: elem.answer,
+                            score: parseInt(elem.score),
+                            type: elem.type,
+                        };
                     }
                     // 满分信息
                     $('#fullmarks').append(fullmarks);
                     // 提交按钮
-                    $('#paper').append('<hr><div class="row"><div class="col-xs-4"></div><div class="col-xs-4"><button type="button" class="btn btn-primary btn-block">提交</button></div><div class="col-xs-4"></div></div>');
+                    $('#paper').append('<hr><div class="row"><div class="col-xs-4"></div><div class="col-xs-4"><button type="submit" class="btn btn-primary btn-block">交卷打分</button></div><div class="col-xs-4"></div></div>');
+                    $('#paper').on('submit', score);
                 }
             });
         }
@@ -140,6 +154,37 @@ function loadCache(book, paper) {
 }
 
 // 计算分数
-function score() {
-
+function score(e) {
+    e.preventDefault();
+    var score = 0;
+    for (var key in answers) {
+        var write = undefined;
+        if (answers[key].type == 'text') {
+            // 填空题
+            write = $('#paper input[name=' + key + ']');
+        } else if (answers[key].type == 'textarea') {
+            // 主观题
+            write = $('#paper textarea[name=' + key + ']');
+        } else if (answers[key].type == 'radio') {
+            // 单选题
+            write = $('#paper input[name=' + key + ']:checked');
+        } else {
+            // 非法题型
+            return -1;
+        }
+        if (write.val() && write.val().trim() == answers[key].answer) {
+            score += answers[key].score;
+        } else {
+            if (answers[key].type == 'textarea') {
+                // 主观题采用警告样式
+                $('.form-group').has(write).addClass('has-warning');
+            } else {
+                // 客观题采用错误样式
+                $('.form-group').has(write).addClass('has-error');
+            }
+        }
+    }
+    $('#scorelabel').text('得分:');
+    $('#score').text(score);
+    $('#scoreboard').show();
 }

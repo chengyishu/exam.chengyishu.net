@@ -46,11 +46,18 @@
         </div>
         <h1 id="paperName" class="text-center"></h1>
         <div class="text-center text-muted">
-            出题人: <b><span id="author"></span></b>
-            满分: <u><b class="red"><span id="fullmarks"></span>分</b></u>
+            <span>出题人:</span>
+            <b><span id="author"></span></b>
+            <span id="scorelabel">满分:</span>
+            <span id="scoreboard">
+                <span class="score"><span id="score">10</span>分</span>
+                <span>/</span>
+            </span>
+            <span class="fullmarks"><span id="fullmarks"></span>分</span>
         </div>
         <div class="text-center text-muted">
-            出题时间: <b><span id="datetime"></span></b>
+            <span>出题时间:</span>
+            <b><span id="datetime"></span></b>
         </div>
         <br>
         <!-- 问题列表 (动态初始化) -->
