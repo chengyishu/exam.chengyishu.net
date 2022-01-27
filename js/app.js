@@ -2,6 +2,10 @@
 var answers = {};
 
 $(function () {
+    // 刷新、返回、关闭检测
+    $(window).bind('beforeunload', function () {
+        return '您所做的更改可能未保存。';
+    });
     // 加载试卷
     const params = new URLSearchParams(window.location.search);
     var book = params.get('book');
