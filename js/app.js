@@ -33,7 +33,15 @@ $(function () {
                     // 满分信息
                     var fullmarks = 0;
                     // 试卷列表
-                    for (var [index, elem] of shuffle(data.content).entries()) {
+                    var content = shuffle(data.content);
+                    var mode = params.get('mode');
+                    if (mode && mode == 'all') {
+                        // 题海模式 (全部试题)
+                    } else {
+                        // 抽选模式 (抽选10题)
+                        content = fetchTop(data.content, 10);
+                    }
+                    for (var [index, elem] of content.entries()) {
                         if (!elem.question) {
                             // 非法试卷
                             $('#paper').append('<hr><div class="text-center">试卷暂未开放 ...</div>');
@@ -122,6 +130,20 @@ function shuffle(array) {
             array[randomIndex], array[currentIndex]];
     }
     return array;
+}
+
+// 获取数组前部元素
+function fetchTop(array, size) {
+    if (size >= array.length) {
+        // 全部返回
+        return array;
+    }
+    // 部分返回
+    var parts = [];
+    for (var i = 0; i < size; i++) {
+        parts.push(array[i]);
+    }
+    return parts;
 }
 
 // 加载试卷标题信息
