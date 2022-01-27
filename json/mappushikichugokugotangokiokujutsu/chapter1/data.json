@@ -1,0 +1,41 @@
+{
+    "author": "李毅",
+    "datetime": "2022/01/26 21:30",
+    "content": [
+        {
+            "question": "日本的首都是{东京}。",
+            "type": "text",
+            "score": 2,
+            "image": "",
+            "audio": "",
+            "video": "",
+            "options": [],
+            "comment": ""
+        },
+        {
+            "question": "日本的首都是哪里？",
+            "type": "radio",
+            "score": 2,
+            "image": "",
+            "audio": "",
+            "video": "",
+            "options": [
+                "东京",
+                "京都",
+                "奈良",
+                "大阪"
+            ],
+            "comment": ""
+        },
+        {
+            "question": "听写/翻译。",
+            "type": "textarea",
+            "score": 2,
+            "image": "",
+            "audio": "",
+            "video": "",
+            "options": [],
+            "comment": "日本的首都是东京。"
+        }
+    ]
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>诚意塾考试系统</title>
+    <link rel="icon" href="images/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="images/app.png">
+    <!-- ZUI Standard zipped CSS files -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/zui/1.10.0/css/zui.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container-fluid">
+            <!-- 导航头 -->
+            <div class="navbar-header">
+                <!-- 移动设备上的导航切换按钮 -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target=".navbar-collapse-example">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- LOGO -->
+                <a class="navbar-brand" href="/">
+                    <img id="logo" src="images/favicon.png" alt="诚意塾" height="30px">
+                </a>
+            </div>
+            <!-- 导航项 (动态初始化) -->
+            <div class="collapse navbar-collapse navbar-collapse-example">
+                <ul id="menu" class="nav navbar-nav"></ul>
+            </div>
+        </div>
+    </nav>
+    <!-- 试卷列表 (动态初始化) -->
+    <div class="container">
+        <h2 id="bookName" class="text-center"></h2>
+        <br>
+        <div id="papers" class="list-group"></div>
+    </div>
+    <!-- ZUI Javascript depends on jQuery -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/zui/1.10.0/lib/jquery/jquery.js"></script>
+    <!-- ZUI Standard zipped JavaScript files -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/zui/1.10.0/js/zui.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
