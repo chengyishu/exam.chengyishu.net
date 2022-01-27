@@ -23,6 +23,8 @@ $(function () {
                     // 出题人和出题时间
                     $('#author').text(data.author);
                     $('#datetime').text(data.datetime);
+                    // 满分信息
+                    var fullmarks = 0;
                     // 试卷列表
                     for (var [index, elem] of shuffle(data.content).entries()) {
                         if (!elem.question) {
@@ -76,7 +78,11 @@ $(function () {
                             .replaceAll('{{video}}', baseUrl + '/' + elem.video)
                             .replaceAll('{{no}}', index + 1);
                         $('#paper').append(html);
+                        // 满分信息
+                        fullmarks += parseInt(elem.score);
                     }
+                    // 满分信息
+                    $('#fullmarks').append(fullmarks);
                     // 提交按钮
                     $('#paper').append('<hr><div class="row"><div class="col-xs-4"></div><div class="col-xs-4"><button type="button" class="btn btn-primary btn-block">提交</button></div><div class="col-xs-4"></div></div>');
                 }
@@ -85,6 +91,7 @@ $(function () {
     }
 });
 
+// 打乱数组元素顺序
 function shuffle(array) {
     let currentIndex = array.length, randomIndex;
     // While there remain elements to shuffle...
@@ -99,6 +106,7 @@ function shuffle(array) {
     return array;
 }
 
+// 加载试卷标题信息
 function loadCache(book, paper) {
     // 题库名称
     $.ajax({
@@ -129,4 +137,9 @@ function loadCache(book, paper) {
 
         }
     });
+}
+
+// 计算分数
+function score() {
+
 }
