@@ -38,8 +38,8 @@ $(function () {
                     if (mode && mode == 'all') {
                         // 题海模式 (全部试题)
                     } else {
-                        // 抽选模式 (抽选10题)
-                        content = fetchTop(data.content, 10);
+                        // 抽选模式 (抽选20题)
+                        content = fetchTop(data.content, 20);
                     }
                     for (var [index, elem] of content.entries()) {
                         if (!elem.question) {
@@ -88,6 +88,8 @@ $(function () {
                             $('#paper').append('<hr><div class="text-center">试卷题型有误 ...</div>');
                             return false;
                         }
+                        // 追加答案
+                        template += '<p class="answer q' + (index + 1) + '"><span class="tag">答案</span><span class="content">{{answer}}</span></p>';
                         template += '</div>';
                         // 内容替换
                         html = template.replaceAll('{{question}}', elem.question)
@@ -95,7 +97,8 @@ $(function () {
                             .replaceAll('{{image}}', baseUrl + '/' + elem.image)
                             .replaceAll('{{audio}}', baseUrl + '/' + elem.audio)
                             .replaceAll('{{video}}', baseUrl + '/' + elem.video)
-                            .replaceAll('{{no}}', index + 1);
+                            .replaceAll('{{no}}', index + 1)
+                            .replaceAll('{{answer}}', elem.answer);
                         $('#paper').append(html);
                         // 满分信息
                         fullmarks += parseInt(elem.score);
@@ -182,6 +185,12 @@ function loadCache(book, paper) {
 // 计算分数
 function score(e) {
     e.preventDefault();
+    // 清除样式
+    $('.form-group').removeClass('has-warning');
+    $('.form-group').removeClass('has-error');
+    // 关闭答案
+    $('.answer').hide();
+    // 重新打分
     var score = 0;
     for (var key in answers) {
         var write = undefined;
@@ -208,6 +217,8 @@ function score(e) {
                 // 客观题采用错误样式
                 $('.form-group').has(write).addClass('has-error');
             }
+            // 显示答案
+            $('.answer.' + key).show();
         }
     }
     $('#scorelabel').text('得分:');
