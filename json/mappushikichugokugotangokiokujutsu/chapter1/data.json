@@ -5,7 +5,7 @@
         {
             "question": "日本的首都是{东京}。",
             "type": "text",
-            "score": 2,
+            "score": 5,
             "image": "",
             "audio": "",
             "video": "",
@@ -15,7 +15,7 @@
         {
             "question": "日本的首都是哪里？",
             "type": "radio",
-            "score": 2,
+            "score": 5,
             "image": "",
             "audio": "",
             "video": "",
@@ -30,7 +30,7 @@
         {
             "question": "听写/翻译。",
             "type": "textarea",
-            "score": 2,
+            "score": 5,
             "image": "",
             "audio": "",
             "video": "",
