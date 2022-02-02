@@ -1,16 +1,1 @@
-{
-    "author": "李毅",
-    "datetime": "2022/01/26 21:30",
-    "content": [
-        {
-            "question": "",
-            "type": "text",
-            "score": 5,
-            "image": "",
-            "audio": "",
-            "video": "",
-            "options": [],
-            "comment": ""
-        }
-    ]
-}
+﻿{"description":"《大家的日语（初级）》课后练习。","author":"李毅","datetime":"2022/02/02 19:33:58","content":[{"question":"わたし{は}マイク・ミラーです。（我是迈克・米勒。）","type":"text","score":"5","image":"","audio":"","video":"","options":[],"comment":""},{"question":"サントスさんは学生{じゃありません}。（桑托斯不是学生。）","type":"text","score":"5","image":"","audio":"","video":"","options":[],"comment":""},{"question":"ミラーさんは会社員です{か}。（米勒是公司职员吗？）","type":"text","score":"5","image":"","audio":"","video":"","options":[],"comment":""},{"question":"サントスさん{も}会社員です。（桑托斯也是公司职员。）","type":"text","score":"5","image":"","audio":"","video":"","options":[],"comment":""}]}
