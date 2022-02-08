@@ -4,6 +4,7 @@
 
  .form-control {
      width: calc(100% - 1.2rem);
+     margin-top: 0.5rem;
  }
 
  .image, .video {
@@ -73,4 +74,13 @@
      color: white;
      border-radius: 0px 3px 3px 0px;
      border: 1px solid black;
+ }
+
+ .form-group label {
+     display: inline;
+     word-break: break-all;
+ }
+
+ button.btn {
+     font-weight: bold;
  }

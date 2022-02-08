@@ -17,6 +17,10 @@ html, body {
     font-size: 14px;
 }
 
+body {
+    padding-bottom: 5rem;
+}
+
 #logo {
     box-shadow: 0px 0px 10px black inset;
     border-radius: 50%;
@@ -59,4 +63,11 @@ a.list-group-item:focus, a.list-group-item:hover {
 
 .text-center {
     text-align: center;
+}
+
+@media (max-width:768px) {
+    .container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
 }
