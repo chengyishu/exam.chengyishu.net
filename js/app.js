@@ -112,7 +112,7 @@ $(function () {
                     // 满分信息
                     $('#fullmarks').append(fullmarks);
                     // 提交按钮
-                    $('#paper').append('<hr><div class="row"><div class="col-xs-4"></div><div class="col-xs-4"><button type="submit" class="btn btn-primary btn-block">交卷打分</button></div><div class="col-xs-4"></div></div>');
+                    $('#paper').append('<br><hr><br><br><div class="row"><div class="col-xs-4"></div><div class="col-xs-4"><button type="submit" class="btn btn-primary btn-block">交卷打分</button></div><div class="col-xs-4"></div></div>');
                     $('#paper').on('submit', score);
                 }
             });
@@ -224,4 +224,5 @@ function score(e) {
     $('#scorelabel').text('得分:');
     $('#score').text(score);
     $('#scoreboard').show();
+    $('body,html').animate({scrollTop:0},100);
 }
