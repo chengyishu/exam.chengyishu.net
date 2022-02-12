@@ -45,6 +45,11 @@ $(function () {
                     html += '<li class="divider"></li>';
                 }
             }
+            // 出题模板
+            html += '<li class="divider"></li>';
+            html += '<li><a href="/template/中文版/zh.zip"><span class="icon-folder-download"></span> 出题模板（中文）</a></li>';
+            html += '<li><a href="/template/日文版/ja.zip"><span class="icon-folder-download"></span> 出题模板（日文）</a></li>';
+            // 完成追加
             html += '</ul></li>';
             $('#menu').append(html);
         }

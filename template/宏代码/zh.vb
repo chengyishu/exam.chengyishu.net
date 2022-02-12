@@ -47,6 +47,7 @@ Sub generate()
         If description = "" Then
             setRedBg descriptionPos
             MsgBox "请填写【题库描述】。"
+            reset
             Exit Sub
         End If
         data = data & qt("description") & ":" & qt(description) & ","
@@ -55,6 +56,7 @@ Sub generate()
         If author = "" Then
             setRedBg authorPos
             MsgBox "请填写【出题人】。"
+            reset
             Exit Sub
         End If
         data = data & qt("author") & ":" & qt(author) & ","
@@ -72,14 +74,22 @@ Sub generate()
             If sType = "" Then
                 setRedBg typeCol & curRow
                 MsgBox "请填写题型信息。"
+                reset
                 Exit Sub
             End If
-            data = data & qt("type") & ":" & qt(sType) & ","
+            If sType = "填空" Then
+                data = data & qt("type") & ":" & qt("text") & ","
+            ElseIf sType = "选择" Then
+                data = data & qt("type") & ":" & qt("radio") & ","
+            ElseIf sType = "主观" Then
+                data = data & qt("type") & ":" & qt("textarea") & ","
+            End If
             '分数
             score = .Range(scoreCol & curRow).Value
             If score = "" Then
                 setRedBg scoreCol & curRow
                 MsgBox "请填写分数信息。"
+                reset
                 Exit Sub
             End If
             data = data & qt("score") & ":" & qt(score) & ","
@@ -98,24 +108,28 @@ Sub generate()
                 If opt1 = "" Then
                     setRedBg opt1Col & curRow
                     MsgBox "请填写选项1信息。"
+                    reset
                     Exit Sub
                 End If
                 opt2 = .Range(opt2Col & curRow).Value
                 If opt2 = "" Then
                     setRedBg opt2Col & curRow
                     MsgBox "请填写选项2信息。"
+                    reset
                     Exit Sub
                 End If
                 opt3 = .Range(opt3Col & curRow).Value
                 If opt3 = "" Then
                     setRedBg opt3Col & curRow
                     MsgBox "请填写选项3信息。"
+                    reset
                     Exit Sub
                 End If
                 opt4 = .Range(opt4Col & curRow).Value
                 If opt4 = "" Then
                     setRedBg opt4Col & curRow
                     MsgBox "请填写选项4信息。"
+                    reset
                     Exit Sub
                 End If
                 data = data & qt("options") & ":[" & qt(opt1) & "," & qt(opt2) & "," & qt(opt3) & "," & qt(opt4) & "],"
@@ -137,10 +151,15 @@ Sub generate()
     '写入JSON
     save data
     '复位
+    reset
     Range("A1").Select
+    MsgBox "导出成功。"
+End Sub
+
+'复位
+Sub reset()
     Application.ScreenUpdating = True '恢复屏幕刷新
     ActiveSheet.Protect DrawingObjects:=True, Contents:=True, Scenarios:=True
-    MsgBox "导出成功。"
 End Sub
 
 '写入JSON
