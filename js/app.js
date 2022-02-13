@@ -59,7 +59,7 @@ $(function () {
                         }
                         if (elem.video) {
                             // 视频附件
-                            template += '<div class="video"><div id="dplayer-{{no}}" class="dplayer" data-video="{{video}}"></div></div>';
+                            template += '<div class="video"><div id="dplayer-{{no}}" class="dplayer" data-src="{{video}}"></div></div>';
                         }
                         // 题目处理
                         if (elem.type == 'text') {
@@ -109,10 +109,15 @@ $(function () {
                             type: elem.type,
                         };
                     }
+                    // 音频处理
+                    $('audio').mediaelementplayer({
+                        // 路径包含尾部 "/"
+                        pluginPath: 'https://cdn.bootcdn.net/ajax/libs/mediaelement/',
+                    });
                     // 视频处理
                     $('.dplayer').each(function () {
                         var id = $(this).attr('id');
-                        var video = $(this).data('video');
+                        var video = $(this).data('src');
                         new DPlayer({
                             container: document.getElementById(id),
                             video: {
