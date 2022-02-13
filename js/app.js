@@ -59,7 +59,7 @@ $(function () {
                         }
                         if (elem.video) {
                             // 视频附件
-                            template += '<div class="video"><video controls src="{{video}}"></video></div>';
+                            template += '<div class="video"><video class="video-js" controls src="{{video}}"></video></div>';
                         }
                         // 题目处理
                         if (elem.type == 'text') {
