@@ -129,11 +129,43 @@ $(function () {
                     // 提交按钮
                     $('#paper').append('<br><hr><br><br><div class="row"><div class="col-xs-4"></div><div class="col-xs-4"><button type="submit" class="btn btn-primary btn-block">交卷打分</button></div><div class="col-xs-4"></div></div>');
                     $('#paper').on('submit', score);
+                    // 必填项跳转
+                    $('#paper').find(':required').on('invalid', jumpToInvalid);
                 }
             });
         }
     }
 });
+
+// 跳转到必填字段
+function jumpToInvalid() {
+    $('#paper').find(':required').off('invalid');
+    if ($('#paper').find(':required:invalid').length > 0) {
+        var first = $('#paper').find(':required:invalid').first();
+        var top = first.offset().top - 100;
+        $('body,html').animate({scrollTop: top}, 500);
+        setTimeout(function() {
+            document.getElementById('paper').reportValidity();
+            $('#paper').find(':required').on('invalid', jumpToInvalid);
+        }, 600);
+    }
+}
+
+// 跳转到错题或得分
+function jumpToErrorOrScore() {
+    if ($('#paper').find('.has-error').length > 0) {
+        var first = $('#paper').find('.has-error').first();
+        var top = first.offset().top - 100;
+        $('body,html').animate({scrollTop: top}, 500);
+    } else if ($('#paper').find('.has-warning').length > 0) {
+        var first = $('#paper').find('.has-warning').first();
+        var top = first.offset().top - 100;
+        $('body,html').animate({scrollTop: top}, 500);
+    } else {
+        $('#scoreboard .score').css('zoom', 1.8);
+        $('body,html').animate({scrollTop: 0}, 500);
+    }
+}
 
 // 打乱数组元素顺序
 function shuffle(array) {
@@ -239,5 +271,6 @@ function score(e) {
     $('#scorelabel').text('得分:');
     $('#score').text(score);
     $('#scoreboard').show();
-    $('body,html').animate({scrollTop:0},100);
+    // 跳转到错题或得分
+    jumpToErrorOrScore();
 }
