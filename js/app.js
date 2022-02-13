@@ -59,7 +59,7 @@ $(function () {
                         }
                         if (elem.video) {
                             // 视频附件
-                            template += '<div class="video"><video class="video-js" controls src="{{video}}"></video></div>';
+                            template += '<div class="video"><div id="dplayer-{{no}}" class="dplayer" data-video="{{video}}"></div></div>';
                         }
                         // 题目处理
                         if (elem.type == 'text') {
@@ -109,6 +109,21 @@ $(function () {
                             type: elem.type,
                         };
                     }
+                    // 视频处理
+                    $('.dplayer').each(function () {
+                        var id = $(this).attr('id');
+                        var video = $(this).data('video');
+                        new DPlayer({
+                            container: document.getElementById(id),
+                            video: {
+                                url: video,
+                            },
+                        });
+                    });
+                    // 防止点击播放按钮触发表单提交
+                    $('.dplayer-controller .dplayer-icon').on('click', function (e) {
+                        e.preventDefault();
+                    });
                     // 满分信息
                     $('#fullmarks').append(fullmarks);
                     // 提交按钮

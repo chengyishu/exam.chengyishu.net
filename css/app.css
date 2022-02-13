@@ -17,15 +17,11 @@
     margin-right: 1.2rem;
 }
 
-.image img, .video video, .audio audio {
+.image img, .audio audio, .video .dplayer {
     margin-top: 10px;
     border-radius: 5px;
     box-shadow: 0px 1px 11px 2px rgb(42 42 42 / 10%);
     width: 100%;
-}
-
-.video video {
-    height: 100%;
 }
 
 #paperName {
